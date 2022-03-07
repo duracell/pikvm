@@ -178,6 +178,15 @@ lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 - If you are getting snow looking screen, you need to make sure you select 50hz OR select anything below 1080p, like 720p60
 - If you are getting an Indian looking screen, please clear the browser cache or use private/incog window
 
+### How can I use the serial console to access to access other devices 
+- You need to stop the service which listens on the ttyAMA0:
+-- rw
+-- systemctl stop serial-getty@ttyAMA0.service
+- If you want this change permanent (not starting again after reboot), you can disable this service:
+-- systemctl disable serial-getty@ttyAMA0.service
+- Important:
+-- Only USB OR the RJ-45 serial connector are working!
+-- I read about removing "ttyAMA0" from /boot/cmdline.txt, but at my file, this was not mentioned
 
 ### Misc stuff
 - Fully working [example](https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4) of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
